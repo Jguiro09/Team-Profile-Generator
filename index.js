@@ -1,9 +1,11 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-const Engineer = require('./engineer');
-const Intern = require('./intern');
-const Manager = require('./manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+
+const generateHTML = require('./generateHTML');
 
 const team = [];
 
@@ -29,7 +31,7 @@ const addM = function newManager()
 
 const addE = function newEmployee()
 {
-    return inquirer
+    inquirer
         .prompt([
             {type: 'list', message: 'Is this new employee an Engineer or Intern?', name: 'role', choices: ['Engineer','Intern']},
             {type: 'input', message: "Enter the employee's name", name: 'name'},
@@ -37,6 +39,7 @@ const addE = function newEmployee()
             {type: 'input', message: "Enter the employee's email address", name: 'email'},
             {type: 'input', message: "Enter the employee's github username", when: (list) => list.role == "Engineer", name: "github"},
             {type: 'input', message: "Enter the employee's school",when: (list) => list.role == "Intern", name: "school"},
+            {type: 'confirm', message: "Would you like to add another employee?", name: "add"}
         ])
         .then((response) => {
             let mName = response.name;
@@ -57,9 +60,21 @@ const addE = function newEmployee()
                 team.push(engineer);
             }
 
-            console.log(team);
+            if(response.add == true)
+            {
+                addE();
+            }
         })
 }
 
+const createHTML = () => 
+{
+    console.log(team);
+    fs.writeFile("test.html", generateHTML(team), (err) => {
+        err ? console.log("woo") : console.log("wooo")
+    })
+}
+
 addM()
-.then(addE);
+.then(addE)
+.then(createHTML);
