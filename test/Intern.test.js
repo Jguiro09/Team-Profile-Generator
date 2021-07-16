@@ -10,10 +10,10 @@ describe('Creates our Intern', () => {
     })
 
     test('Grabs school from intern', () => {
-        expect(intern.getSchool()).toEqual(expect.stringContaining(intern.school))
+        expect(intern.getSchool()).toMatch(intern.school);
     })
 
     test('Grabs role from intern', () => {
-        expect(intern.getRole()).toEqual("Intern");
+        expect(intern.getRole()).toMatch("Intern");
     })
 })

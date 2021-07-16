@@ -9,6 +9,10 @@ describe('Creates our Manager', () =>
     })
 
     test('Grabs role from Manager', () => {
-        expect(manager.getRole()).toEqual("Manager")
+        expect(manager.getRole()).toMatch("Manager")
+    })
+
+    test('Grabs office number from Manager', () => {
+        expect(manager.getOfficeNumber()).toBe(manager.officeNumber)
     })
 })

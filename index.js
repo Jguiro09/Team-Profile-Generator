@@ -62,19 +62,14 @@ function newEmployee()
             }
 
             if(response.add == true)
-            {
-                newEmployee();
-            }
+            {newEmployee();}
             else
-            {
-                createHTML();
-            }
+            {createHTML();}
         })
 }
 
 const createHTML = () => 
 {
-    console.log(team);
     fs.writeFile("test.html", generateHTML(team), (err) => {
         err ? console.log("Error: The following program has not worked") : console.log("A HTML has been created for you!")
     })

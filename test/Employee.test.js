@@ -12,21 +12,21 @@ describe('Creates our Employee', () => {
 
     test("obtains our employee name", () => 
     {
-        expect(employee.getName()).toEqual(expect.any(String));
+        expect(employee.getName()).toEqual(expect.stringContaining(employee.name));
     })
 
     test("obtains our employee ID", () => 
     {
-        expect(employee.getID()).toEqual(expect.any(Number));
+        expect(employee.getID()).toBe(employee.id);
     })
 
     test("obtains our employee Email", () => 
     {
-        expect(employee.getEmail()).toEqual(expect.any(String));
+        expect(employee.getEmail()).toMatch(employee.email);
     })
 
     test("obtains our employee Role", () => 
     {
-        expect(employee.getRole()).toEqual(expect.any(String));
+        expect(employee.getRole()).toMatch("Employee");
     })
 });

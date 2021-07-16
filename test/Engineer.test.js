@@ -9,7 +9,7 @@ describe('Creates our Engineer', () =>
     })
     
     test('Obtains Engineer Github', () => {
-        expect(engineer.getGithub()).toEqual(expect.stringContaining(engineer.github))
+        expect(engineer.getGithub()).toMatch(engineer.github)
     })
 
     test('Obtains Engineer Role', () => {
