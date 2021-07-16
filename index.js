@@ -9,9 +9,9 @@ const generateHTML = require('./generateHTML');
 
 const team = [];
 
-const addM = function newManager()
+function newManager()
 {
-    return inquirer
+    inquirer
         .prompt([
         {type: 'input', message: "Enter the manager's name", name: 'name'},
         {type: 'input', message: "Enter the manager's employee ID", name: 'employee'},
@@ -26,10 +26,11 @@ const addM = function newManager()
 
             let manager = new Manager (mName, employeeID, email, office);
             team.push(manager);
+            newEmployee();
         })
 }
 
-const addE = function newEmployee()
+function newEmployee()
 {
     inquirer
         .prompt([
@@ -62,7 +63,11 @@ const addE = function newEmployee()
 
             if(response.add == true)
             {
-                addE();
+                newEmployee();
+            }
+            else
+            {
+                createHTML();
             }
         })
 }
@@ -71,10 +76,8 @@ const createHTML = () =>
 {
     console.log(team);
     fs.writeFile("test.html", generateHTML(team), (err) => {
-        err ? console.log("woo") : console.log("wooo")
+        err ? console.log("Error: The following program has not worked") : console.log("A HTML has been created for you!")
     })
 }
 
-addM()
-.then(addE)
-.then(createHTML);
+newManager();

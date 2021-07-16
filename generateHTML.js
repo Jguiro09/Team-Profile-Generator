@@ -75,6 +75,4 @@ return `<!doctype html>
 </html>`
 }
 
-
-
 module.exports = generateHTML;
