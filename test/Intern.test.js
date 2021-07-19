@@ -1,19 +1,34 @@
+//Require Intern  
+const Intern = require('../lib/Intern');
 
-const Intern = require('../lib/Intern')
+describe("Intern", () => {
+    //create test on Intern class
+    test('creates Intern object containing "name, id, email"', () => {
+        const intern = new Intern();
 
-const intern = new Intern('Jacob', 42, 'jacob@gmail.com', 'schoolName')
-
-describe('Creates our Intern', () => {
-    test('Adds school to intern', () => 
-    {
-        expect(intern.school).toEqual(expect.any(String));
+        expect("name" in intern).toEqual(true);
+        expect("id" in intern).toEqual(true);
+        expect("email" in intern).toEqual(true);
+        expect("school" in intern).toEqual(true);
     })
+    //test to see if you can set school using our constructor
+    test('Checks if you can set school', () => {
+        const school = "SCHOOL";
+        const intern = new Intern("name", 123, "email", school);
 
-    test('Grabs school from intern', () => {
-        expect(intern.getSchool()).toMatch(intern.school);
+        expect(intern.school).toEqual(school);
     })
+    //test to see if getRole() returns "Intern"
+    test('Checks if you can get role from getRole()', () => {
+        const intern = new Intern('name', 1234, "email", "school");
 
-    test('Grabs role from intern', () => {
-        expect(intern.getRole()).toMatch("Intern");
+        expect(intern.getRole()).toEqual("Intern");
+    })
+    //test to see if getSchool() returns school testvalue
+    test('Checks if you can get role from getRole()', () => {
+        const school = "SCHOOL";
+        const intern = new Intern('name', 1234, "email", school);
+
+        expect(intern.getSchool()).toEqual(school);
     })
 })
