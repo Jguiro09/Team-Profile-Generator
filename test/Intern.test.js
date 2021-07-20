@@ -3,7 +3,7 @@ const Intern = require('../lib/Intern');
 
 describe("Intern", () => {
     //create test on Intern class
-    test('creates Intern object containing "name, id, email"', () => {
+    test('creates Intern object containing "name, id, email, school"', () => {
         const intern = new Intern();
 
         expect("name" in intern).toEqual(true);
