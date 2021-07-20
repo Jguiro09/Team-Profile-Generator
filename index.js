@@ -5,7 +5,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 
-const generateHTML = require('./generateHTML');
+const generateHTML = require('./src/generateHTML');
 
 const team = [];
 
@@ -70,7 +70,7 @@ function newEmployee()
 
 const createHTML = () => 
 {
-    fs.writeFile("test.html", generateHTML(team), (err) => {
+    fs.writeFile("./dist/team.html", generateHTML(team), (err) => {
         err ? console.log("Error: The following program has not worked") : console.log("A HTML has been created for you!")
     })
 }
