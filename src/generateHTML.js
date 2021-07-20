@@ -79,8 +79,8 @@ return `<!doctype html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href = "../dist/reset.css" rel="stylesheet">
-    <link href = "../dist/style.css" rel="stylesheet">
+    <link href = "./FinalHTML/reset.css" rel="stylesheet">
+    <link href = "./FinalHTML/style.css" rel="stylesheet">
 
     <title>Employees</title>
 </head>
