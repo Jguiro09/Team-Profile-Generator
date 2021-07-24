@@ -70,7 +70,7 @@ function newEmployee()
 
 const createHTML = () => 
 {
-    fs.writeFile("./dist/team.html", generateHTML(team), (err) => {
+    fs.writeFile("./team.html", generateHTML(team), (err) => {
         err ? console.log("Error: The following program has not worked") : console.log("A HTML has been created for you!")
     })
 }
